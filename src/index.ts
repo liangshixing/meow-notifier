@@ -40,20 +40,29 @@ server.tool(
     "send_notification",
     {
         message: z.string().describe("Notification message content"),
+        url: z.string().optional().describe("Optional URL to include in the notification"),
+        title: z.string().optional().describe("Optional title for the notification (defaults to 'meow-notifier')"),
     },
-    async (params: { message: string }) => {
+    async (params: { message: string; url?: string; title?: string }) => {
         const results: string[] = [];
         const errors: string[] = [];
 
         // 对所有nickname并发发送通知
         const promises = nicknames.map(async (nickname) => {
             try {
+                // 构建请求体，如果有 url 参数则包含它
+                const requestBody: { title: string; msg: string; url?: string } = {
+                    title: params.title || "meow-notifier",
+                    msg: params.message,
+                };
+
+                if (params.url) {
+                    requestBody.url = params.url;
+                }
+
                 const response = await axios.post(
                     `https://api.chuckfang.com/${nickname}`,
-                    {
-                        title: "LLM",
-                        msg: params.message,
-                    }
+                    requestBody
                 );
                 return { nickname, success: true, data: response.data };
             } catch (error: unknown) {
