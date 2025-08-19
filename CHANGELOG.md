@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/liangshixing/meow-notifier/compare/v1.0.0...v1.1.0) (2025-08-19)
+
+
+### Features
+
+* add npm pack step to release workflow ([292b21f](https://github.com/liangshixing/meow-notifier/commit/292b21f796729b397b101a376634e527a6a141d8))
+
 # 1.0.0 (2025-08-19)
 
 
