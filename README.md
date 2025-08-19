@@ -152,14 +152,6 @@ MEOW_NICKNAMES="nickname1,nickname2" meow-notifier
 ❌ nickname3: error_message
 ```
 
-## 开发和测试
-
-运行测试脚本验证多nickname功能：
-
-```bash
-node test-multi-nicknames.js
-```
-
 ## 注意事项
 
 - 至少需要配置一个nickname
