@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/liangshixing/meow-notifier/compare/v1.1.0...v1.2.0) (2025-08-19)
+
+
+### Features
+
+* disable npm publishing in semantic release configuration ([11d56ac](https://github.com/liangshixing/meow-notifier/commit/11d56ac8ad0e59030bf8be12e58281a744451fe8))
+* enable npm publishing in semantic release configuration ([0c5ed1a](https://github.com/liangshixing/meow-notifier/commit/0c5ed1a6dab30a8c7be7fa720c695cfbd077fbe8))
+* enhance send_notification tool to include optional title and URL parameters ([6435449](https://github.com/liangshixing/meow-notifier/commit/64354498e8b26d33334013056fec3c2fffc155b3))
+
 # [1.1.0](https://github.com/liangshixing/meow-notifier/compare/v1.0.0...v1.1.0) (2025-08-19)
 
 
