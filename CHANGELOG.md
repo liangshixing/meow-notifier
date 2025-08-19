@@ -1,3 +1,18 @@
+# 1.0.0 (2025-08-19)
+
+
+### Bug Fixes
+
+* add continue-on-error to semantic release step and update npm plugin configuration ([58b678c](https://github.com/liangshixing/meow-notifier/commit/58b678c6b82e787044edad670470878e12733a62))
+* update test script to exit with success status ([be873ed](https://github.com/liangshixing/meow-notifier/commit/be873ed23b1dbb374c37dfd6ac79303afc802bf6))
+
+
+### Features
+
+* add npm pack step to Node.js CI workflow ([b950c94](https://github.com/liangshixing/meow-notifier/commit/b950c9448e797144ddd7408f65af9016b80c8c61))
+* add semantic release configuration and GitHub Actions workflow ([05d1ffb](https://github.com/liangshixing/meow-notifier/commit/05d1ffb6b92fb1f4a863f540304cbbf473512f2c))
+* initialize meow-notifier project with MCP server and notification tool ([97b0b6a](https://github.com/liangshixing/meow-notifier/commit/97b0b6a36da915782177f5dd0529d3d9b326362e))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
