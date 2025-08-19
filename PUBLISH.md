@@ -8,7 +8,7 @@
    ```
 
 2. **更新 package.json 中的仓库信息**
-   - 将 `repository.url` 中的 `your-username` 替换为你的 GitHub 用户名
+   - 将 `repository.url` 中的 `liangshixing` 替换为你的 GitHub 用户名
    - 更新 `bugs.url` 和 `homepage` 字段
    - 填写 `author` 字段
 
