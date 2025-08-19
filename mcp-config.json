@@ -1,0 +1,17 @@
+{
+    "mcpServers": {
+        "meow-notifier": {
+            "command": "node",
+            "args": [
+                "/Users/liangshixing/Documents/Kilo-Code/MCP/meow-notifier/build/index.js"
+            ],
+            "env": {
+                "MEOW_NICKNAMES": "[\"test1\", \"test2\", \"test3\"]"
+            },
+            "timeout": 60,
+            "alwaysAllow": [
+                "send_notification"
+            ]
+        }
+    }
+}
