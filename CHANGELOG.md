@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/liangshixing/meow-notifier/compare/v1.2.0...v1.3.0) (2025-08-27)
+
+
+### Features
+
+* update version retrieval from package.json for meow-notifier ([d096c34](https://github.com/liangshixing/meow-notifier/commit/d096c34054b5b4ab4cac1d85584520bdf6b2e3ec))
+
 # [1.2.0](https://github.com/liangshixing/meow-notifier/compare/v1.1.0...v1.2.0) (2025-08-19)
 
 
