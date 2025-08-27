@@ -1,3 +1,11 @@
+# [1.5.0](https://github.com/liangshixing/meow-notifier/compare/v1.4.0...v1.5.0) (2025-08-27)
+
+
+### Features
+
+* send_notification guide to server prompt ([30fc086](https://github.com/liangshixing/meow-notifier/commit/30fc086387d2f946edae5c0808b78e5bb8645033))
+* update zod dependency to version 3.23.8 ([0892ccc](https://github.com/liangshixing/meow-notifier/commit/0892ccc278eeaaba0dad55a893ef61c5887186cf))
+
 # [1.4.0](https://github.com/liangshixing/meow-notifier/compare/v1.3.0...v1.4.0) (2025-08-27)
 
 
