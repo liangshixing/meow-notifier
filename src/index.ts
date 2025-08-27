@@ -129,6 +129,57 @@ server.tool(
     }
 );
 
+// 添加提示词资源，引导 LLM 使用 send_notification 工具
+server.prompt(
+    "send_notification_guide",
+    {
+        message: z.string().optional().describe("Optional message to customize the prompt"),
+    },
+    async (params: { message?: string }) => {
+        const customMessage = params.message ? ` ${params.message}` : "";
+
+        const promptText = `你是一个智能助手，可以使用 send_notification 工具来发送通知到手机。
+
+${customMessage}
+
+send_notification 工具功能：
+- 发送消息到手机上
+- 支持可选标题和URL参数
+- 返回详细的发送结果
+
+使用场景示例：
+1. 发送重要提醒或通知
+2. 分享链接或信息到手机
+3. 发送任务完成确认
+4. 发送错误或警告信息
+5. 发送日常提醒
+
+参数说明：
+- message: 必需的消息内容
+- title: 可选的标题（默认为 "meow-notifier"）
+- url: 可选的URL链接
+
+使用示例：
+- 发送简单消息: {"message": "任务已完成"}
+- 发送带标题的消息: {"message": "有新消息", "title": "系统通知"}
+- 发送带链接的消息: {"message": "查看详情", "url": "https://example.com"}
+
+请根据需要使用 send_notification 工具来发送通知。`;
+
+        return {
+            messages: [
+                {
+                    role: "user",
+                    content: {
+                        type: "text",
+                        text: promptText,
+                    },
+                },
+            ],
+        };
+    }
+);
+
 // 启动 stdio 传输
 const transport = new StdioServerTransport();
 await server.connect(transport);
