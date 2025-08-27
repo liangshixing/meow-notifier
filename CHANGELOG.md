@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/liangshixing/meow-notifier/compare/v1.3.0...v1.4.0) (2025-08-27)
+
+
+### Features
+
+* update semantic version and npm plugin version in release workflow ([44bc1a7](https://github.com/liangshixing/meow-notifier/commit/44bc1a7a2bb83a60b7ed48f718ab69d8ea0e4b63))
+
 # [1.3.0](https://github.com/liangshixing/meow-notifier/compare/v1.2.0...v1.3.0) (2025-08-27)
 
 
