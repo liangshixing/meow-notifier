@@ -3,6 +3,15 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import axios from "axios";
+import { readFileSync } from "fs";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJsonPath = join(__dirname, '../package.json');
+const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
+const version = packageJson.version;
 
 // 从环境变量获取配置
 const MEOW_NICKNAMES = process.env.MEOW_NICKNAMES;
@@ -32,7 +41,7 @@ console.error(`Configured nicknames: ${nicknames.join(', ')}`);
 // 创建 MCP 服务
 const server = new McpServer({
     name: "meow-notifier",
-    version: "1.0.0",
+    version: version,
 });
 
 // 添加发送 Meow 通知的工具
