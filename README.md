@@ -17,8 +17,8 @@
 {
     "mcpServers": {
         "meow-notifier": {
-            "command": "node",
-            "args": ["/path/to/meow-notifier/build/index.js"],
+            "command": "npx",
+            "args": ["-y", "meow-notifier"],
             "env": {
                 "MEOW_NICKNAMES": "[\"nickname1\", \"nickname2\", \"nickname3\"]"
             },
@@ -35,8 +35,8 @@
 {
     "mcpServers": {
         "meow-notifier": {
-            "command": "node",
-            "args": ["/path/to/meow-notifier/build/index.js"],
+            "command": "npx",
+            "args": ["-y", "meow-notifier"],
             "env": {
                 "MEOW_NICKNAMES": "nickname1,nickname2,nickname3"
             },
@@ -53,8 +53,8 @@
 {
     "mcpServers": {
         "meow-notifier": {
-            "command": "node",
-            "args": ["/path/to/meow-notifier/build/index.js"],
+            "command": "npx",
+            "args": ["-y", "meow-notifier"],
             "env": {
                 "MEOW_NICKNAMES": "single_nickname"
             },
@@ -97,7 +97,7 @@ MEOW_NICKNAMES="nickname1,nickname2" meow-notifier
     "mcpServers": {
         "meow-notifier": {
             "command": "npx",
-            "args": ["meow-notifier"],
+            "args": ["-y", "meow-notifier"],
             "env": {
                 "MEOW_NICKNAMES": "[\"nickname1\", \"nickname2\", \"nickname3\"]"
             },

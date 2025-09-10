@@ -47,26 +47,35 @@ const server = new McpServer({
 // 添加发送 Meow 通知的工具
 server.tool(
     "send_notification",
+    "Send message to phone via system push notification.",
     {
         message: z.string().describe("Notification message content"),
         url: z.string().optional().describe("Optional URL to include in the notification"),
         title: z.string().optional().describe("Optional title for the notification (defaults to 'meow-notifier')"),
+        msgType: z.string().optional().describe("Message display type: text (default, plain text), html (render HTML format in App)"),
+        htmlHeight: z.number().optional().describe("HTML message height in pixels (only effective when msgType=html, default 200)"),
     },
-    async (params: { message: string; url?: string; title?: string }) => {
+    async (params: { message: string; url?: string; title?: string; msgType?: string; htmlHeight?: number }) => {
         const results: string[] = [];
         const errors: string[] = [];
 
         // 对所有nickname并发发送通知
         const promises = nicknames.map(async (nickname) => {
             try {
-                // 构建请求体，如果有 url 参数则包含它
-                const requestBody: { title: string; msg: string; url?: string } = {
+                // 构建请求体，支持所有可选参数
+                const requestBody: { title: string; msg: string; url?: string; msgType?: string; htmlHeight?: number } = {
                     title: params.title || "meow-notifier",
                     msg: params.message,
                 };
 
                 if (params.url) {
                     requestBody.url = params.url;
+                }
+                if (params.msgType) {
+                    requestBody.msgType = params.msgType;
+                }
+                if (params.htmlHeight) {
+                    requestBody.htmlHeight = params.htmlHeight;
                 }
 
                 const response = await axios.post(
@@ -158,11 +167,14 @@ send_notification 工具功能：
 - message: 必需的消息内容
 - title: 可选的标题（默认为 "meow-notifier"）
 - url: 可选的URL链接
+- msgType: 可选的显示类型：text（默认，纯文本显示），html（在App中渲染HTML格式）
+- htmlHeight: 可选的HTML高度（像素，仅在msgType=html时生效，默认200）
 
 使用示例：
 - 发送简单消息: {"message": "任务已完成"}
 - 发送带标题的消息: {"message": "有新消息", "title": "系统通知"}
 - 发送带链接的消息: {"message": "查看详情", "url": "https://example.com"}
+- 发送HTML消息: {"message": "<h1>标题</h1><p>内容</p>", "msgType": "html", "htmlHeight": 300}
 
 请根据需要使用 send_notification 工具来发送通知。`;
 
