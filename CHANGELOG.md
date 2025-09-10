@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/liangshixing/meow-notifier/compare/v1.5.0...v1.6.0) (2025-09-10)
+
+
+### Features
+
+* **notification:** add msgType and htmlHeight parameters to send_notification tool ([9f66503](https://github.com/liangshixing/meow-notifier/commit/9f66503bec87553d418fd0af83af0c128081ec87))
+
 # [1.5.0](https://github.com/liangshixing/meow-notifier/compare/v1.4.0...v1.5.0) (2025-08-27)
 
 
