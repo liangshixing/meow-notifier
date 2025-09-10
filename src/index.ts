@@ -62,8 +62,8 @@ server.tool(
         // 对所有nickname并发发送通知
         const promises = nicknames.map(async (nickname) => {
             try {
-                // 构建请求体，支持所有可选参数
-                const requestBody: { title: string; msg: string; url?: string; msgType?: string; htmlHeight?: number } = {
+                // 构建请求体，只包含 title、msg 和 url
+                const requestBody: { title: string; msg: string; url?: string } = {
                     title: params.title || "meow-notifier",
                     msg: params.message,
                 };
@@ -71,15 +71,18 @@ server.tool(
                 if (params.url) {
                     requestBody.url = params.url;
                 }
+
+                // 构建查询参数
+                const url = new URL(`https://api.chuckfang.com/${nickname}`);
                 if (params.msgType) {
-                    requestBody.msgType = params.msgType;
-                }
-                if (params.htmlHeight) {
-                    requestBody.htmlHeight = params.htmlHeight;
+                    url.searchParams.set("msgType", params.msgType);
+                    if (params.msgType === "html" && params.htmlHeight) {
+                        url.searchParams.set("htmlHeight", params.htmlHeight.toString());
+                    }
                 }
 
                 const response = await axios.post(
-                    `https://api.chuckfang.com/${nickname}`,
+                    url.toString(),
                     requestBody
                 );
                 return { nickname, success: true, data: response.data };
