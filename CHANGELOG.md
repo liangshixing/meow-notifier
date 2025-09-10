@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/liangshixing/meow-notifier/compare/v1.6.0...v1.7.0) (2025-09-10)
+
+
+### Features
+
+* **notification:**  update URL parameters for send_notification tool ([17504ee](https://github.com/liangshixing/meow-notifier/commit/17504ee09f44ae7d1d58c8ab246bdc37c69e86c6))
+
 # [1.6.0](https://github.com/liangshixing/meow-notifier/compare/v1.5.0...v1.6.0) (2025-09-10)
 
 
