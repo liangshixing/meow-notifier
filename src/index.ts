@@ -13,6 +13,13 @@ const packageJsonPath = join(__dirname, '../package.json');
 const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
 const version = packageJson.version;
 
+// 处理命令行参数
+const args = process.argv.slice(2);
+if (args.includes('--version') || args.includes('-v')) {
+    console.log(version);
+    process.exit(0);
+}
+
 // 从环境变量获取配置
 const MEOW_NICKNAMES = process.env.MEOW_NICKNAMES;
 if (!MEOW_NICKNAMES) {
