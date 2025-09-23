@@ -1,9 +1,10 @@
 {
     "mcpServers": {
         "meow-notifier": {
-            "command": "node",
+            "command": "npx",
             "args": [
-                "/Users/liangshixing/Documents/Kilo-Code/MCP/meow-notifier/build/index.js"
+                "-y",
+                "meow-notifier"
             ],
             "env": {
                 "MEOW_NICKNAMES": "[\"test1\", \"test2\", \"test3\"]"
