@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/liangshixing/meow-notifier/compare/v1.7.1...v1.8.0) (2025-09-23)
+
+
+### Features
+
+* **cli:** 添加版本号命令行参数支持 ([a70e9bf](https://github.com/liangshixing/meow-notifier/commit/a70e9bf3b56ae7d779e26120265e0302a24f1d28))
+
 ## [1.7.1](https://github.com/liangshixing/meow-notifier/compare/v1.7.0...v1.7.1) (2025-09-23)
 
 # [1.7.0](https://github.com/liangshixing/meow-notifier/compare/v1.6.0...v1.7.0) (2025-09-10)
