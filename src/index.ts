@@ -54,15 +54,15 @@ const server = new McpServer({
 // 添加发送 Meow 通知的工具
 server.tool(
     "send_notification",
-    "Send message to phone via system push notification.",
+    "Send push notification to configured mobile devices. Call this tool directly with parameters, do not construct JSON strings.",
     {
-        message: z.string().describe("Notification message content"),
+        message: z.string().describe("Required notification message content (plain text or HTML)"),
         url: z.string().optional().describe("Optional URL to include in the notification"),
         title: z.string().optional().describe("Optional title for the notification (defaults to 'meow-notifier')"),
-        msgType: z.string().optional().describe("Message display type: text (default, plain text), html (render HTML format in App)"),
-        htmlHeight: z.number().optional().describe("HTML message height in pixels (only effective when msgType=html, default 200)"),
+        msgType: z.enum(["text", "html"]).optional().describe("Message display type: 'text' (default, plain text) or 'html' (render HTML format in App)"),
+        htmlHeight: z.number().optional().describe("HTML message height in pixels (only effective when msgType='html', default 200)"),
     },
-    async (params: { message: string; url?: string; title?: string; msgType?: string; htmlHeight?: number }) => {
+    async (params: { message: string; url?: string; title?: string; msgType?: "text" | "html"; htmlHeight?: number }) => {
         const results: string[] = [];
         const errors: string[] = [];
 
@@ -164,7 +164,12 @@ ${customMessage}
 send_notification 工具功能：
 - 发送消息到手机上
 - 支持可选标题和URL参数
-- 返回详细的发送结果
+- 返回详细的发送结果，包含每个接收者的成功/失败状态
+
+重要提醒：
+- 直接调用工具，不要构造 JSON 字符串
+- 参数值直接传递给工具，不需要额外格式化
+- 如果发送失败，请检查错误信息并重试
 
 使用场景示例：
 1. 发送重要提醒或通知
@@ -173,20 +178,27 @@ send_notification 工具功能：
 4. 发送错误或警告信息
 5. 发送日常提醒
 
-参数说明：
-- message: 必需的消息内容
-- title: 可选的标题（默认为 "meow-notifier"）
-- url: 可选的URL链接
-- msgType: 可选的显示类型：text（默认，纯文本显示），html（在App中渲染HTML格式）
-- htmlHeight: 可选的HTML高度（像素，仅在msgType=html时生效，默认200）
+参数详细说明：
+- message (必需): 通知消息内容，纯文本或HTML代码
+- title (可选): 通知标题，默认为 "meow-notifier"
+- url (可选): 要包含在通知中的URL链接
+- msgType (可选): 消息显示类型
+  * "text" - 纯文本显示（默认）
+  * "html" - 在App中渲染HTML格式
+- htmlHeight (可选): HTML消息高度（像素，仅在msgType="html"时有效，默认200）
 
-使用示例：
-- 发送简单消息: {"message": "任务已完成"}
-- 发送带标题的消息: {"message": "有新消息", "title": "系统通知"}
-- 发送带链接的消息: {"message": "查看详情", "url": "https://example.com"}
-- 发送HTML消息: {"message": "<h1>标题</h1><p>内容</p>", "msgType": "html", "htmlHeight": 300}
+正确调用方式：
+- 发送简单消息: 直接调用工具，message="任务已完成"
+- 发送带标题的消息: message="有新消息", title="系统通知"
+- 发送带链接的消息: message="查看详情", url="https://example.com"
+- 发送HTML消息: message="<h1>标题</h1><p>内容</p>", msgType="html", htmlHeight=150
 
-请根据需要使用 send_notification 工具来发送通知。`;
+错误处理：
+- 如果发送失败，会返回详细的错误信息
+- 请根据错误信息调整参数后重试
+- 支持多个接收者，会显示每个接收者的发送状态
+
+请根据实际需要直接调用 send_notification 工具来发送通知。`;
 
         return {
             messages: [
