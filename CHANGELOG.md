@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/liangshixing/meow-notifier/compare/v1.8.3...v1.9.0) (2025-11-13)
+
+
+### Features
+
+* optimize MCP tool prompts to reduce LLM JSON format errors ([acd7575](https://github.com/liangshixing/meow-notifier/commit/acd75751266940f64a27b429764502663ce9643d))
+
 ## [1.8.3](https://github.com/liangshixing/meow-notifier/compare/v1.8.2...v1.8.3) (2025-11-13)
 
 ## [1.8.2](https://github.com/liangshixing/meow-notifier/compare/v1.8.1...v1.8.2) (2025-10-10)
