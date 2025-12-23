@@ -43,8 +43,6 @@ if (nicknames.length === 0) {
     throw new Error("At least one nickname must be provided in MEOW_NICKNAMES");
 }
 
-console.error(`Configured nicknames: ${nicknames.join(', ')}`);
-
 // 创建 MCP 服务
 const server = new McpServer({
     name: "meow-notifier",
@@ -217,4 +215,3 @@ send_notification 工具功能：
 // 启动 stdio 传输
 const transport = new StdioServerTransport();
 await server.connect(transport);
-console.error("Meow Notifier MCP server running on stdio");
