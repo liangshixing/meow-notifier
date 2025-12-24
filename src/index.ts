@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { z } from "zod";
+import { z } from "zod/v4";
 import axios from "axios";
 import { readFileSync } from "fs";
 import { dirname, join } from "path";
@@ -50,16 +50,20 @@ const server = new McpServer({
 });
 
 // 添加发送 Meow 通知的工具
-server.tool(
+
+server.registerTool(
     "send_notification",
-    "Send push notification to configured mobile devices. Call this tool directly with parameters, do not construct JSON strings.",
     {
-        message: z.string().describe("Required notification message content (plain text or HTML)"),
-        url: z.string().optional().describe("Optional URL to include in the notification"),
-        title: z.string().optional().describe("Optional title for the notification (defaults to 'meow-notifier')"),
-        msgType: z.enum(["text", "html"]).optional().describe("Message display type: 'text' (default, plain text) or 'html' (render HTML format in App)"),
-        htmlHeight: z.number().optional().describe("HTML message height in pixels (only effective when msgType='html', default 200)"),
+        description: "Send push notification to configured mobile devices. Call this tool directly with parameters, do not construct JSON strings.",
+        inputSchema: {
+            message: z.string().describe("Required notification message content (plain text or HTML)"),
+            url: z.string().optional().describe("Optional URL to include in the notification"),
+            title: z.string().optional().describe("Optional title for the notification (defaults to 'meow-notifier')"),
+            msgType: z.enum(["text", "html"]).optional().describe("Message display type: 'text' (default, plain text) or 'html' (render HTML format in App)"),
+            htmlHeight: z.number().optional().describe("HTML message height in pixels (only effective when msgType='html', default 200)"),
+        },
     },
+    // @ts-ignore
     async (params: { message: string; url?: string; title?: string; msgType?: "text" | "html"; htmlHeight?: number }) => {
         const results: string[] = [];
         const errors: string[] = [];
@@ -147,10 +151,13 @@ server.tool(
 );
 
 // 添加提示词资源，引导 LLM 使用 send_notification 工具
-server.prompt(
+server.registerPrompt(
     "send_notification_guide",
     {
-        message: z.string().optional().describe("Optional message to customize the prompt"),
+        title: "Send Notification Guide",
+        argsSchema: {
+            message: z.string().optional().describe("Optional message to customize the prompt"),
+        }
     },
     async (params: { message?: string }) => {
         const customMessage = params.message ? ` ${params.message}` : "";
@@ -201,9 +208,9 @@ send_notification 工具功能：
         return {
             messages: [
                 {
-                    role: "user",
+                    role: "user" as const,
                     content: {
-                        type: "text",
+                        type: "text" as const,
                         text: promptText,
                     },
                 },
