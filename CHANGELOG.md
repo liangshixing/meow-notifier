@@ -1,3 +1,5 @@
+## [1.9.3](https://github.com/liangshixing/meow-notifier/compare/v1.9.2...v1.9.3) (2025-12-26)
+
 ## [1.9.2](https://github.com/liangshixing/meow-notifier/compare/v1.9.1...v1.9.2) (2025-12-24)
 
 ## [1.9.1](https://github.com/liangshixing/meow-notifier/compare/v1.9.0...v1.9.1) (2025-12-23)
