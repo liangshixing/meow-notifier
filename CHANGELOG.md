@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/liangshixing/meow-notifier/compare/v1.9.3...v1.10.0) (2026-04-01)
+
+
+### Features
+
+* **skills:** add meow-notifier skill ([90a77fd](https://github.com/liangshixing/meow-notifier/commit/90a77fd2c89c5cf8d42b869ad9d99822ddad09a4))
+
 ## [1.9.3](https://github.com/liangshixing/meow-notifier/compare/v1.9.2...v1.9.3) (2025-12-26)
 
 ## [1.9.2](https://github.com/liangshixing/meow-notifier/compare/v1.9.1...v1.9.2) (2025-12-24)
